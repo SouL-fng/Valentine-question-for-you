@@ -1,0 +1,50 @@
+# Share This Website
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share This Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .share-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Share This Website</h1>
+    <p>If you find this website useful, share it with your friends!</p>
+    <button class="share-button" onclick="shareWebsite()">Share</button>
+
+    <script>
+        function shareWebsite() {
+            const url = window.location.href;
+            const text = "Check out this website: " + url;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Website Share',
+                    text: text,
+                    url: url
+                })
+                .then(() => console.log('Share successful'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                alert("Sharing not supported on this browser.");
+            }
+        }
+    </script>
+
+</body>
+</html>

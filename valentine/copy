@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Special</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Valentine's Day Celebration!</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Share the Love</h2>
+            <p>Spread the joy of Valentine's Day by sharing this website with your loved ones!</p>
+            <button onclick="shareWebsite()">Share Now</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Valentine's Day Celebration. All rights reserved.</p>
+    </footer>
+    <script>
+        function shareWebsite() {
+            const url = window.location.href;
+            const text = "Check out this amazing Valentine's Day website!";
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Valentine\'s Day Special',
+                    text: text,
+                    url: url
+                })
+                .then(() => console.log('Website shared successfully!'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                alert('Sharing not supported on this browser. Please copy the link: ' + url);
+            }
+        }
+    </script>
+</body>
+</html>
